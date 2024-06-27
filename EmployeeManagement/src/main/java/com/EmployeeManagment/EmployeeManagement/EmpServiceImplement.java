@@ -39,6 +39,8 @@ public class EmpServiceImplement implements EmpService{
     public String addEmployee(Employee employee) {
         // emp.add(employee);
         EmployeeEntity employeeEntity = new EmployeeEntity();
+        //since we want to copy all things from employee to EmployeeEntity, directly it is not possible.
+        // we're using BeanUtils to copy properties from one class to another class.
         BeanUtils.copyProperties(employee, employeeEntity);
         System.out.println(employeeEntity);
         employeeRepository.save(employeeEntity);
